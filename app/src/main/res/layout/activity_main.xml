@@ -5,122 +5,168 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="#E8EAF6"
     tools:context=".MainActivity">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewWelcome"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
-        app:cardBackgroundColor="@color/purple_500"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp">
+        android:theme="@style/Theme.Shadowfox.AppBarOverlay"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textViewWelcome"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Welcome!"
-            android:textSize="24sp"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            android:gravity="center_horizontal"
-            android:padding="16dp"/>
-    </androidx.cardview.widget.CardView>
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.Shadowfox.PopupOverlay"
+            app:title="Calculator and Tools" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewDisplay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="6dp"
-        app:cardBackgroundColor="#FFFFFF"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintTop_toBottomOf="@id/cardViewWelcome"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:id="@+id/textViewCalculatorDisplay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="24dp"
-            android:paddingBottom="24dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:text="0"
-            android:textSize="48sp"
-            android:gravity="end"
-            android:textColor="#333333"
-            android:fontFamily="sans-serif-light" />
-    </androidx.cardview.widget.CardView>
-
-
-    <GridLayout
-        android:id="@+id/gridLayoutCalculatorButtons"
+    <ScrollView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:columnCount="4"
-        android:rowCount="5"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintTop_toBottomOf="@id/cardViewDisplay"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/app_bar_main"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Row 1 -->
-        <Button android:id="@+id/buttonClear" style="@style/MinimalCalculatorButton" android:text="C"/>
-        <Button android:id="@+id/buttonDivide" style="@style/MinimalCalculatorButton" android:text="/"/>
-        <Button android:id="@+id/buttonMultiply" style="@style/MinimalCalculatorButton" android:text="*"/>
-        <Button android:id="@+id/buttonBackspace" style="@style/MinimalCalculatorButton" android:text="DEL"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/textViewCalculatorTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Calculate Your Weather Reports Here"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:paddingTop="16dp"
+                android:paddingBottom="8dp"/>
 
-        <!-- Row 2 -->
-        <Button android:id="@+id/button7" style="@style/MinimalCalculatorButton" android:text="7"/>
-        <Button android:id="@+id/button8" style="@style/MinimalCalculatorButton" android:text="8"/>
-        <Button android:id="@+id/button9" style="@style/MinimalCalculatorButton" android:text="9"/>
-        <Button android:id="@+id/buttonSubtract" style="@style/MinimalCalculatorButton" android:text="-"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp">
 
-        <!-- Row 3 -->
-        <Button android:id="@+id/button4" style="@style/MinimalCalculatorButton" android:text="4"/>
-        <Button android:id="@+id/button5" style="@style/MinimalCalculatorButton" android:text="5"/>
-        <Button android:id="@+id/button6" style="@style/MinimalCalculatorButton" android:text="6"/>
-        <Button android:id="@+id/buttonAdd" style="@style/MinimalCalculatorButton" android:text="+"/>
+                <TextView
+                    android:id="@+id/textViewCalculatorDisplay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="0"
+                    android:textSize="40sp"
+                    android:gravity="end"
+                    android:fontFamily="sans-serif-light" />
+            </androidx.cardview.widget.CardView>
 
-        <!-- Row 4 -->
-        <Button android:id="@+id/button1" style="@style/MinimalCalculatorButton" android:text="1"/>
-        <Button android:id="@+id/button2" style="@style/MinimalCalculatorButton" android:text="2"/>
-        <Button android:id="@+id/button3" style="@style/MinimalCalculatorButton" android:text="3"/>
-        <Button android:id="@+id/buttonEquals" style="@style/MinimalCalculatorButton" android:layout_gravity="fill" android:layout_rowSpan="2" android:text="="/>
+            <GridLayout
+                android:id="@+id/gridLayoutCalculatorButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="4"
+                android:rowCount="5"
+                android:layout_marginBottom="16dp">
 
+                <!-- Calculator buttons will use the blue theme via MinimalCalculatorButton style -->
+                <Button android:id="@+id/buttonClear" style="@style/MinimalCalculatorButton" android:text="C"/>
+                <Button android:id="@+id/buttonDivide" style="@style/MinimalCalculatorButton" android:text="/"/>
+                <Button android:id="@+id/buttonMultiply" style="@style/MinimalCalculatorButton" android:text="*"/>
+                <Button android:id="@+id/buttonBackspace" style="@style/MinimalCalculatorButton" android:text="DEL"/>
 
-        <!-- Row 5 -->
-        <Button android:id="@+id/button0" style="@style/MinimalCalculatorButton" android:layout_gravity="fill" android:layout_columnSpan="2" android:text="0"/>
-        <Button android:id="@+id/buttonDecimal" style="@style/MinimalCalculatorButton" android:text="."/>
+                <Button android:id="@+id/button7" style="@style/MinimalCalculatorButton" android:text="7"/>
+                <Button android:id="@+id/button8" style="@style/MinimalCalculatorButton" android:text="8"/>
+                <Button android:id="@+id/button9" style="@style/MinimalCalculatorButton" android:text="9"/>
+                <Button android:id="@+id/buttonSubtract" style="@style/MinimalCalculatorButton" android:text="-"/>
 
-    </GridLayout>
+                <Button android:id="@+id/button4" style="@style/MinimalCalculatorButton" android:text="4"/>
+                <Button android:id="@+id/button5" style="@style/MinimalCalculatorButton" android:text="5"/>
+                <Button android:id="@+id/button6" style="@style/MinimalCalculatorButton" android:text="6"/>
+                <Button android:id="@+id/buttonAdd" style="@style/MinimalCalculatorButton" android:text="+"/>
 
-    <Button
-        android:id="@+id/buttonLogout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:backgroundTint="@color/purple_700"
-        android:textColor="@android:color/white"
-        android:paddingTop="14dp"
-        android:paddingBottom="14dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:cornerRadius="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+                <Button android:id="@+id/button1" style="@style/MinimalCalculatorButton" android:text="1"/>
+                <Button android:id="@+id/button2" style="@style/MinimalCalculatorButton" android:text="2"/>
+                <Button android:id="@+id/button3" style="@style/MinimalCalculatorButton" android:text="3"/>
+                <Button android:id="@+id/buttonEquals" style="@style/MinimalCalculatorButton" android:layout_gravity="fill" android:layout_rowSpan="2" android:text="="/>
 
+                <Button android:id="@+id/button0" style="@style/MinimalCalculatorButton" android:layout_gravity="fill" android:layout_columnSpan="2" android:text="0"/>
+                <Button android:id="@+id/buttonDecimal" style="@style/MinimalCalculatorButton" android:text="."/>
+            </GridLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:id="@+id/textViewTempConverterTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperature Converter"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/editTextTempValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter temperature value"
+                android:inputType="numberDecimal|numberSigned"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioGroup
+                android:id="@+id/radioGroupConvertFrom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="4dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="From: "/>
+                <RadioButton android:id="@+id/radioConvertFromCelsius" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="°C" android:checked="true"/>
+                <RadioButton android:id="@+id/radioConvertFromFahrenheit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="°F"/>
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/radioGroupConvertTo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="8dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To:     "/>
+                <RadioButton android:id="@+id/radioConvertToCelsius" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="°C"/>
+                <RadioButton android:id="@+id/radioConvertToFahrenheit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="°F" android:checked="true"/>
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/buttonConvertTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Convert"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/textViewConvertedTempResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="Result: 32 °F"
+                android:layout_marginBottom="16dp"/>
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

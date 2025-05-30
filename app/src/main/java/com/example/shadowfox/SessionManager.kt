@@ -20,22 +20,19 @@ class SessionManager(context: Context) {
 
         // Email address (make variable public to access from outside)
         const val KEY_PASSWORD = "password" // Storing password in SharedPreferences is not recommended for production apps
+        const val KEY_DISPLAY_NAME = "display_name"
+        const val KEY_USER_BIO = "user_bio"
     }
 
     /**
      * Create login session
      */
     fun createLoginSession(email: String, password: String) {
-        // This function is called when a user successfully logs in.
-        // It confirms their login status.
         editor.putBoolean(IS_LOGGED_IN, true)
-        // It's good practice to also re-affirm the email for the current session,
-        // though the primary storage of credentials happens at signup.
-        editor.putString(KEY_EMAIL, email) // Storing email for the active session
-        // Storing password again here is not strictly necessary if createUser did it,
-        // but ensures the session reflects the credentials used for this specific login.
-        // However, the main point is that logoutUser() should not clear these.
-        editor.putString(KEY_PASSWORD, password)
+        editor.putString(KEY_EMAIL, email)
+        // It's generally better not to store/re-store password during login session creation
+        // if it's already stored at signup. The main purpose here is to set IS_LOGGED_IN.
+        // editor.putString(KEY_PASSWORD, password) // Consider removing if password stored securely at signup
         editor.commit()
     }
 
@@ -43,11 +40,21 @@ class SessionManager(context: Context) {
      * Create new user - for signup
      */
     fun createUser(email: String, password: String) {
-        // For simplicity, we are just storing it.
-        // In a real app, you might want to check if user already exists or store it more securely.
         editor.putString(KEY_EMAIL, email)
-        editor.putString(KEY_PASSWORD, password)
-        editor.commit() // Commit the changes for user creation
+        editor.putString(KEY_PASSWORD, password) // Ensure this is handled securely in a real app
+        // Initialize display name from email part
+        editor.putString(KEY_DISPLAY_NAME, email.substringBefore('@'))
+        editor.putString(KEY_USER_BIO, "") // Initialize empty bio
+        editor.commit()
+    }
+
+    /**
+     * Update user profile data (Display Name and Bio)
+     */
+    fun updateUserProfile(displayName: String, bio: String) {
+        editor.putString(KEY_DISPLAY_NAME, displayName)
+        editor.putString(KEY_USER_BIO, bio)
+        editor.commit()
     }
 
 
@@ -57,7 +64,9 @@ class SessionManager(context: Context) {
     fun getUserDetails(): HashMap<String, String?> {
         val user = HashMap<String, String?>()
         user[KEY_EMAIL] = prefs.getString(KEY_EMAIL, null)
-        user[KEY_PASSWORD] = prefs.getString(KEY_PASSWORD, null)
+        user[KEY_PASSWORD] = prefs.getString(KEY_PASSWORD, null) // For login check, not for display
+        user[KEY_DISPLAY_NAME] = prefs.getString(KEY_DISPLAY_NAME, prefs.getString(KEY_EMAIL, "")?.substringBefore('@'))
+        user[KEY_USER_BIO] = prefs.getString(KEY_USER_BIO, "")
         return user
     }
 

@@ -3,7 +3,16 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="purple_200">#CE93D8</color> <!-- Lighter Purple -->
-    <color name="purple_500">#E6E6FA</color>
-    <color name="purple_700">#898989</color> <!-- Darker Purple -->
+    <!-- Blue Theme Colors -->
+    <color name="blue_primary">#B2A6CE</color> <!-- Material Blue 500 -->
+    <color name="blue_primary_dark">#D3D3FF</color> <!-- Material Blue 700 -->
+    <color name="blue_accent">#E0D4FC</color> <!-- Material Blue A200 -->
+    <color name="blue_light">#D3D3FF</color> <!-- Material Blue 100 -->
+    <color name="blue_text_primary">#FFFFFF</color>
+    <color name="blue_text_secondary">#DEBCE1</color> <!-- Blue Grey 200 -->
+
+    <!-- Original Purple (can be removed or kept for specific elements if needed) -->
+    <color name="purple_200">#CE93D8</color>
+    <color name="purple_500">#9C27B0</color> <!-- Changed to a more standard purple for reference -->
+    <color name="purple_700">#7B1FA2</color>
 </resources>

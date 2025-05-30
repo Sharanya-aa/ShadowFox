@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@android:drawable/ic_menu_manage"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:title="Settings" />
+    </group>
+
+    <item android:title="Account">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@android:drawable/ic_menu_revert"
+                android:title="Logout" />
+            <!-- Sign In option is typically handled by LoginActivity if user is logged out -->
+            <!-- If you need a "Sign In" option here for some specific flow, you can add it -->
+            <!-- <item
+                android:id="@+id/nav_signin"
+                android:icon="@android:drawable/ic_menu_send"
+                android:title="Sign In" /> -->
+        </menu>
+    </item>
+</menu>

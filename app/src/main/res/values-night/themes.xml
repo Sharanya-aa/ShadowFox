@@ -1,7 +1,19 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Shadowfox" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Shadowfox" parent="Theme.Material3.DayNight">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/blue_primary_dark</item> <!-- Darker blue for night primary -->
+        <item name="colorPrimaryVariant">@color/blue_primary</item> <!-- Slightly lighter for variant in dark -->
+        <item name="colorOnPrimary">@color/blue_text_primary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/blue_accent</item>
+        <item name="colorSecondaryVariant">@color/blue_accent</item>
+        <item name="colorOnSecondary">@color/blue_text_primary</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/black</item> <!-- Darker background for night -->
+        <item name="android:textColorPrimary">@color/blue_light</item>
+        <item name="android:textColorSecondary">@color/blue_text_secondary</item>
     </style>
 </resources>

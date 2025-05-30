@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".WeatherActivity">
+
+    <EditText
+        android:id="@+id/editTextLocation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter city name"
+        android:inputType="text"
+        android:maxLines="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonFetchWeather"
+        android:layout_marginEnd="8dp"/>
+
+    <Button
+        android:id="@+id/buttonFetchWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Weather"
+        app:layout_constraintTop_toTopOf="@id/editTextLocation"
+        app:layout_constraintBottom_toBottomOf="@id/editTextLocation"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/editTextLocation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        tools:visibility="visible"/>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/progressBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewCityName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="City Name" />
+
+            <ImageView
+                android:id="@+id/imageViewWeatherIcon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                tools:src="@mipmap/ic_launcher"/>
+
+            <TextView
+                android:id="@+id/textViewTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="48sp"
+                android:layout_gravity="center_horizontal"
+                tools:text="25°C" />
+
+            <TextView
+                android:id="@+id/textViewWeatherCondition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"
+                tools:text="Clear Sky" />
+
+            <TextView
+                android:id="@+id/textViewWeatherDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_gravity="center_horizontal"
+                tools:text="few clouds" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="4"
+                android:layout_marginTop="16dp"
+                android:useDefaultMargins="true">
+
+                <TextView android:text="Feels Like:" android:textStyle="bold"/>
+                <TextView android:id="@+id/textViewFeelsLike" tools:text="26°C"/>
+
+                <TextView android:text="Min/Max Temp:" android:textStyle="bold"/>
+                <TextView android:id="@+id/textViewMinMaxTemp" tools:text="20°C / 30°C"/>
+
+                <TextView android:text="Humidity:" android:textStyle="bold"/>
+                <TextView android:id="@+id/textViewHumidity" tools:text="60%"/>
+
+                <TextView android:text="Wind Speed:" android:textStyle="bold"/>
+                <TextView android:id="@+id/textViewWindSpeed" tools:text="5 m/s"/>
+
+                <TextView android:text="Pressure:" android:textStyle="bold"/>
+                <TextView android:id="@+id/textViewPressure" tools:text="1012 hPa"/>
+
+                <TextView android:text="Sunrise:" android:textStyle="bold"/>
+                <TextView android:id="@+id/textViewSunrise" tools:text="06:00 AM"/>
+
+                <TextView android:text="Sunset:" android:textStyle="bold"/>
+                <TextView android:id="@+id/textViewSunset" tools:text="06:30 PM"/>
+            </GridLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

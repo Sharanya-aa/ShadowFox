@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
 
         // If user is already logged in, navigate to MainActivity
         if (sessionManager.isLoggedIn()) {
-            navigateToMain()
+            navigateToHome() // Changed to navigateToHome
             return // Finish this activity so user can't go back to it
         }
 
@@ -46,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
             if (email == storedEmail && password == storedPassword) {
                 sessionManager.createLoginSession(email, password) // Re-affirm login session
                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                navigateToMain()
+                navigateToHome() // Changed to navigateToHome
             } else {
                 Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show()
             }
@@ -58,8 +58,8 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToMain() {
-        val intent = Intent(this, MainActivity::class.java)
+    private fun navigateToHome() { // Renamed function
+        val intent = Intent(this, HomeActivity::class.java) // Changed to HomeActivity
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
